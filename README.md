@@ -25,7 +25,7 @@ graph TD
     subgraph Data_Preparation [資料準備與預處理]
         Raw[原始圖片 dataset_folder] -->|Split Logic| Cropped[切割圖片 processed_images]
         Cropped -->|Label Parsing| LabeledData[標註數據]
-        LabeledData -->|Grayscale + Resize + Norm| Tensor[輸入張量 (28x28x1)]
+        LabeledData -->|Grayscale + Resize + Norm| Tensor["輸入張量 (28x28x1)"]
     end
 
     subgraph Training_Core [模型訓練核心 cnn.py]
@@ -56,7 +56,7 @@ flowchart TD
     Start([啟動 cnn.py]) --> Scan{掃描 dataset_folder}
     Scan -->|發現圖片| ParseName[解析檔名取得 Label]
     ParseName --> Crop[依固定座標切割為 5 張]
-    Crop --> Preprocess[轉灰階 -> Resize(28x28) -> Normalize]
+    Crop --> Preprocess["轉灰階 -> Resize(28x28) -> Normalize"]
     Preprocess --> TrainStep[模型訓練 (Fit)]
     TrainStep --> Scan
     Scan -->|無更多圖片| Save[儲存模型 digit_recognition_model.h5]
