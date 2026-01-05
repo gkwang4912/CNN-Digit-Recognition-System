@@ -57,7 +57,7 @@ flowchart TD
     Scan -->|發現圖片| ParseName[解析檔名取得 Label]
     ParseName --> Crop[依固定座標切割為 5 張]
     Crop --> Preprocess["轉灰階 -> Resize(28x28) -> Normalize"]
-    Preprocess --> TrainStep[模型訓練 (Fit)]
+    Preprocess --> TrainStep["模型訓練 (Fit)"]
     TrainStep --> Scan
     Scan -->|無更多圖片| Save[儲存模型 digit_recognition_model.h5]
     Save --> End([結束])
